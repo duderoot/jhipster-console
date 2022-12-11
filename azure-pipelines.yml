@@ -41,10 +41,10 @@ pool:
 steps:
 - script: |
     docker version
-    docker build -f jhipster-"$(APP)"/Dockerfile -t jhipster/jhipster-"$(APP)":travis jhipster-"$(APP)"/
+    docker build -f jhipster-"$(APP)"/Dockerfile -t duderoot/jhipster-"$(APP)":travis jhipster-"$(APP)"/
   displayName: 'Install'
 
 - script: |
     docker images
-    docker inspect jhipster/jhipster-"$(APP)":travis
+    docker inspect duderoot/jhipster-"$(APP)":travis
   displayName: 'Run test'
