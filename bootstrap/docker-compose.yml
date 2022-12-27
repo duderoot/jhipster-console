@@ -2,7 +2,7 @@
 version: '2'
 services:
     jhipster-elasticsearch:
-        image: jhipster/jhipster-elasticsearch:latest
+        image: duderoot/jhipster-elasticsearch:latest
         ports:
             - 9200:9200
             - 9300:9300
@@ -13,7 +13,7 @@ services:
         #   - log-data:/usr/share/elasticsearch/data
 
     jhipster-logstash:
-        image: jhipster/jhipster-logstash:latest
+        image: duderoot/jhipster-logstash:latest
         environment:
             - INPUT_TCP_PORT=5000
             - INPUT_UDP_PORT=5000
@@ -31,21 +31,21 @@ services:
         #    - ./log-conf/:/usr/share/logstash/pipeline/
 
     jhipster-console:
-        image: jhipster/jhipster-console:latest
+        image: duderoot/jhipster-console:latest
         ports:
             - 5601:5601
         #environment:
         #    - ELASTICSEARCH_URL=http://jhipster-elasticsearch:9200
 
     jhipster-import-dashboards:
-        image: jhipster/jhipster-import-dashboards:latest
+        image: duderoot/jhipster-import-dashboards:latest
         environment:
             - ELASTICSEARCH_URL=http://jhipster-elasticsearch:9200
         depends_on:
             - jhipster-elasticsearch
 
     jhipster-curator:
-        image: jhipster/jhipster-curator:latest
+        image: duderoot/jhipster-curator:latest
         environment:
             - ES_HOST=jhipster-elasticsearch
             - ES_PORT=9200
@@ -53,7 +53,7 @@ services:
             - UNIT=days
 
     jhipster-alerter:
-        image: jhipster/jhipster-alerter:latest
+        image: duderoot/jhipster-alerter:latest
         environment:
             - ES_HOST=jhipster-elasticsearch
             - ES_PORT=9200
@@ -62,7 +62,7 @@ services:
             - ../jhipster-alerter/config.yaml:/opt/elastalert/config.yaml
 
     jhipster-zipkin:
-        image: jhipster/jhipster-zipkin:latest
+        image: duderoot/jhipster-zipkin:latest
         environment:
             - ES_HOSTS=http://jhipster-elasticsearch:9200
             # Change localhost:5601 by the URL by which your client access Kibana
