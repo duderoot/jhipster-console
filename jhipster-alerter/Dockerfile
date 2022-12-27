@@ -1,10 +1,10 @@
-FROM python:2.7-alpine
+FROM python:3.11-alpine
 
 RUN apk update && apk upgrade && apk add bash curl tar musl-dev linux-headers g++ libffi-dev libffi openssl-dev libmagic
 
 ENV SET_CONTAINER_TIMEZONE=false \
     CONTAINER_TIMEZONE=UTC \
-    ELASTALERT_URL=https://github.com/Yelp/elastalert/archive/v0.1.36.tar.gz \
+    ELASTALERT_URL=https://github.com/jertel/elastalert2/archive/refs/tags/2.9.0.tar.gz \
     ELASTALERT_HOME=/opt/elastalert \
     RULES_DIRECTORY=/opt/elastalert/rules \
     ES_HOST=jhipster-elasticsearch \
@@ -22,8 +22,8 @@ RUN curl -Lo elastalert.tar.gz ${ELASTALERT_URL} && \
 
 WORKDIR /opt/elastalert
 
-RUN pip install "requests==2.18.1" && \ 
-    pip install "setuptools>=11.3" && \
+RUN pip install "requests==2.28.1" && \ 
+    pip install "setuptools==65.5.0" && \
     python setup.py install
 
 COPY wait-for-elasticsearch.sh start-elastalert.sh /opt/

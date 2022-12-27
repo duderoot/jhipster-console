@@ -44,13 +44,14 @@ services:
         depends_on:
             - jhipster-elasticsearch
 
-    # jhipster-alerter:
-    #     build: jhipster-alerter/
-    #     environment:
-    #         - WEBHOOK_URL=https://
-    #     volumes:
-    #         - ./jhipster-alerter/config.yaml:/opt/elastalert/config.yaml
-    #         - ./alerts/rules/:/opt/elastalert/rules
+    jhipster-alerter:
+        image: duderoot/jhipster-alerter
+        build: jhipster-alerter/
+        environment:
+            - WEBHOOK_URL=https://
+        volumes:
+            - ./jhipster-alerter/config.yaml:/opt/elastalert/config.yaml
+            - ./alerts/rules/:/opt/elastalert/rules
 
     #https://www.elastic.co/guide/en/elasticsearch/client/curator/current/configuration.html
     jhipster-curator:
