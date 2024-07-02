@@ -1,4 +1,4 @@
-FROM python:3.11-alpine3.17
+FROM python:3.13.0a2-alpine3.17
 
 RUN apk update && apk upgrade && apk add bash curl tar musl-dev linux-headers g++ libffi-dev libffi openssl-dev libmagic
 
